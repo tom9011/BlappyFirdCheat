@@ -148,27 +148,31 @@ void hooked_fixed_update( PlayerController_o* thisptr )
             if ( bad_ptr( position ) )
                 return;
 
+            bool update_position = false;
+
             if ( GetAsyncKeyState( 'W' ) )
             {
                 position->fields.y += 7.f * *delta_time;
-                transform_set_position( transform, position );
+                update_position = true;
             }
             if ( GetAsyncKeyState( 'S' ) )
             {
-                position->fields.y += -7.f * *delta_time;
-                transform_set_position( transform, position );
+                position->fields.y -= 7.f * *delta_time;
+                update_position = true;
             }
             if ( GetAsyncKeyState( 'A' ) )
             {
-                position->fields.x += -7.f * *delta_time;
-                transform_set_position( transform, position );
+                position->fields.x -= 7.f * *delta_time;
+                update_position = true;
             }
             if ( GetAsyncKeyState( 'D' ) )
             {
                 position->fields.x += 7.f * *delta_time;
-                transform_set_position( transform, position );
+                update_position = true;
             }
-            return;
+
+            if ( update_position )
+                transform_set_position( transform, position );
         }
         else
             thisptr->fields.gravity = orig_gravity;
