@@ -15,6 +15,8 @@ bool spin = false;
 
 void console_menu( )
 {
+    static bool init = true;
+
     const auto update_required = [ ] ( ) -> bool
     {
         if ( GetAsyncKeyState( VK_F1 ) & 1 )
@@ -33,18 +35,17 @@ void console_menu( )
             return true;
         }
 
-        static bool init = true;
         if ( init )
-        {
-            init = false;
             return true;
-        }
 
         return false;
     }( );
 
     if ( !update_required )
         return;
+
+    if ( init )
+        init = false;
 
     system( "cls" );
 
@@ -212,6 +213,8 @@ void init( )
     AllocConsole( );
     FILE* fp = nullptr;
     freopen_s( &fp, "CONOUT$", "w", stdout );
+
+    SetConsoleTitleW( L"BlappyFirdCheat" );
 
     il2cpp_helper::init( );
 
