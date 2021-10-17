@@ -7,7 +7,6 @@ il2cpp_callable_t< Il2CppObject* ( * )( UnityEngine_Transform_o* ) > transform_g
 il2cpp_callable_t< void( * )( UnityEngine_Transform_o*, UnityEngine_Quaternion_o* )> transform_set_rotation;
 il2cpp_callable_t< Il2CppObject* ( * )( void* ) > time_get_delta_time;
 il2cpp_callable_t< Il2CppObject* ( * )( void*, float*, float*, float* ) > quaternion_euler;
-il2cpp_callable_t< Il2CppObject* ( * )( void* ) > gui_utility_get_gui_depth;
 
 bool fly = false;
 bool no_clip = false;
@@ -238,7 +237,6 @@ void init( )
     transform_set_rotation.initialize( "UnityEngine", "Transform", "set_rotation" );
     time_get_delta_time.initialize( "UnityEngine", "Time", "get_deltaTime" );
     quaternion_euler.initialize( "UnityEngine", "Quaternion", "Euler" );
-    gui_utility_get_gui_depth.initialize( "UnityEngine", "GUIUtility", "get_guiDepth" );
 }
 
 BOOL __stdcall DllMain( HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved )
